@@ -1,5 +1,6 @@
  package models;
 import javax.swing.*;
+import java.io.File;
 
  /**
  * A classe <i>leDadosWin</i> permite a leitura de dados de tipos nativos e de   
@@ -260,21 +261,16 @@ public class InOut {
 	 * @param cabecalho que aparecer no topo da mensagem
 	 * @param frase     que aparecera dentro da caixa de mensagem
 	 */
-	public static void MsgDeInformacao(String cabecalho, String frase){
-		Icon c = new ImageIcon("");
-		JOptionPane.showMessageDialog(null, frase, cabecalho, JOptionPane.INFORMATION_MESSAGE, c);
-	}
+//	public static void MsgDeInformacao(String cabecalho, String frase){
+//		Icon c = new ImageIcon("");
+//		JOptionPane.showMessageDialog(null, frase, cabecalho, JOptionPane.INFORMATION_MESSAGE, c);
+//	}
 
 	//
 	 public static void MsgDeInformacao(String cabecalho, String frase, String img){
-		// java.net.URL imgURL = InOut.class.getResource(img);
-		Icon c = new ImageIcon(img);
-//		 Icon c = null;
-//		 if (imgURL != null) {
-//			 c = new ImageIcon(imgURL); // Se achou a imagem, cria o ícone
-//		 } else {
-//			 System.err.println("Erro: Não foi possível encontrar a imagem " + img);
-//		 }
+
+
+	Icon c = new ImageIcon(img);
 
 		 JOptionPane.showMessageDialog(null, frase, cabecalho, JOptionPane.INFORMATION_MESSAGE, c);
 	 }
@@ -305,13 +301,13 @@ public class InOut {
  * Exemplos...
  * @param args : Entrada de dados do cmd
  */
-        //public static void main(String [] args){
-        void main() {
-		String nome = leString("Digite o seu nome: ");
-		int idade = leInt("Digite a sua idade: ");
+        public static void main(String [] args){
+//        //void main() {
+//		String nome = leString("Digite o seu nome: ");
+//		int idade = leInt("Digite a sua idade: ");
 		
-		MsgDeInformacao("MsgDeInformacao", nome + " tem " + idade + " anos." );
-		MsgSemIcone("MsgSemIcone", nome + " tem " + idade + " anos." );
-		MsgDeAviso("MsgDeAviso", nome + " tem " + idade + " anos." );
+		MsgDeInformacao("MsgDeInformacao", "ab" + " tem " + "2" + " anos.", "");
+//		MsgSemIcone("MsgSemIcone", nome + " tem " + idade + " anos." );
+//		MsgDeAviso("MsgDeAviso", nome + " tem " + idade + " anos." );
 	}
 }

@@ -1,14 +1,14 @@
 package models;
 
-import java.io.Reader;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Oraculo {
+    private static final Scanner scanner = new Scanner(System.in);
     private String nome;
     private Guerreiro warrior;
-    final private String imagemOraculo = "models/oraculo.png";
-    final private String imagemGuerreiro = "https://pt.pngtree.com/free-picture";
+    final private String imagemOraculo = "C:\\Users\\athma\\Desktop\\WarProject\\RPGWar\\src\\originaloraculo.png";
+    final private String imagemGuerreiro = "C:\\Users\\athma\\Desktop\\WarProject\\RPGWar\\src\\originalguerreiro.png";
 
     public Oraculo(Guerreiro warrior){
         this.warrior = warrior;
@@ -25,10 +25,8 @@ public class Oraculo {
     }
 
     public String prologoIntroducao(){
-        Scanner scanner = new Scanner(System.in);
         System.out.println("-- PRÓLOGO --");
-        System.out.println("\nQual o seu nome Guerreiro?");
-        var nomeGuerreiro = scanner.nextLine();
+        var nomeGuerreiro = InOut.leString("Qual o seu nome Guerreiro:");
         warrior.setNome(nomeGuerreiro);
         var vidasGuerreiro = sortearVIdas();
         warrior.setQtdVidas(vidasGuerreiro);
@@ -50,25 +48,42 @@ public class Oraculo {
         int vida = warrior.getQtdVidas();
         Random r = new Random();
         var numeroAleatorio = r.nextInt((max - min) + 1) + min;
+        InOut.MsgDeInformacao("LEVEL 01", "Você agora está no primeiro nivel!", imagemOraculo);
 
-        while(warrior.getQtdVidas() > 0){
-            var lerInt =  InOut.leInt("Digite o numero secreto!");
-            InOut.MsgDeInformacao("Espero ter acertado!","", imagemGuerreiro);
+        while(vida > 0){
+            var lerInt = InOut.leInt("Digite o numero secreto!");
+            InOut.MsgDeInformacao("!!!!!!!!", "Espero ter acertado!", imagemGuerreiro);
             if(lerInt == numeroAleatorio){
                 return true;
             } else if(lerInt < numeroAleatorio){
                 vida -= 1;
-               InOut.MsgDeInformacao("OPA", "O número secreto é maior que o seu chute.", imagemOraculo);
+                warrior.setQtdVidas(vida);
+                InOut.MsgDeInformacao("OPA", "O número secreto é maior que o seu chute.", imagemOraculo);
             } else {
                 vida -= 1;
+                warrior.setQtdVidas(vida);
                 InOut.MsgDeInformacao("OPA", "O número secreto é menor que seu chute.", imagemOraculo);
             }
         }
         return false;
     }
     
-    public boolean loadLEvel02(){
-        return true;
+    public boolean loadLevel02(){
+        InOut.MsgDeInformacao("LEVEL 02", "Você agora está no segundo nivel, Guerreiro!", imagemOraculo);
+        InOut.MsgDeInformacao("CHARADAS", "Responda as 3 charadas e você poderá passar para o próximo nível", imagemOraculo);
+
+        int vida = warrior.getQtdVidas();
+
+//        while(vida > 0){
+//            while()
+//        }
+
+        return false;
+    }
+
+    public boolean loadLevel03(){
+        InOut.MsgDeInformacao("LEVEL 03", "------", imagemOraculo);
+        return false;
     }
     
     public boolean decidirVidaExtra(String misericordia){
